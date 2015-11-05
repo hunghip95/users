@@ -1,0 +1,12 @@
+<h1>Hello <%=@user.name%>!</h1>
+<p>
+	<strong>Name</strong>
+	<%=@user.name%>
+	
+</p>
+<p>
+	<strong>Password</strong>
+	<%=@user.password%>
+</p>
+<%=link_to 'signup',new_users_path%>
+<%=link_to 'home',welcome_home_path%>
