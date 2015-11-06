@@ -1,11 +1,17 @@
 <h1>Login</h1>
-<%=form_for :user,url: login_check_path do |f| %>
-	
-	<%=f.label:name%>
-	<%=f.text_field :name%>
-	<%=f.label:password%>
-	<%=f.password_field :password%>
-	<%=f.submit:login%>
+<% if !@error.nil? then%>
+<%= @error %>
 <%end%>
-<%=link_to 'signup',new_users_path%>
-<%=link_to 'home',welcome_home_path%>
+<%=form_for :user,url: login_check_path do |f| %>	
+	<%= f.label:name %>
+	<br/>
+	<%= f.text_field :name %>
+	<br/>
+	<%= f.label:password %>
+	<br/>
+	<%= f.password_field :password %>
+	<br/>
+	<%= f.submit:'Login' %>
+<%end%>
+<%=link_to 'Signup',new_users_path%>
+<%=link_to 'Home',welcome_home_path%>

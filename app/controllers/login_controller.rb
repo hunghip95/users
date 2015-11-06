@@ -9,10 +9,11 @@ class LoginController < ApplicationController
       if @user.password == @b[:password]
         render 'show'
       else
-       
-        redirect_to :action=>'login'  
+        @error = 'Your password is wrong'
+        render 'login'  
       end
     else
+      @error = 'Wrong account'
       render 'login'
     end
   end

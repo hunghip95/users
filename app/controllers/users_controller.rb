@@ -6,15 +6,20 @@ class UsersController < ApplicationController
     
   end
   def create   
-    @a=User.find_by(params.require(:user).permit(:name))
-    if @a == nil
-       @user=User.create(params.require(:user).permit(:name,:password,:shop))
-       if @user.shop == 'normal' 
-          render 'show'
+    @a = User.find_by(params.require(:user).permit(:name))
+    if (!@a )
+       @user = User.new(params.require(:user).permit(:name,:password,:shop))
+       if @user.save
+         if @user.shop == 'normal' 
+            render 'show'
+         else
+         end
        else
-          
-       end      
+         @error = 'Name is invalid'
+         render 'new'  
+       end    
     else 
+      @error = 'User existed'
       render 'new'
     end  
   end

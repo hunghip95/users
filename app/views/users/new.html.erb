@@ -1,12 +1,21 @@
 <h1>Create a new account</h1>
-<%=form_for :user,url: {:action=>'create'} do |f|%>
-	<%=f.label:name%>
-	<%=f.text_field :name%>
-	<%=f.label:password%>
-	<%=f.password_field :password%>
-	<%=f.label:Type%>
-	<%=f.select :shop,['normal','shop']%>
-	<%=f.submit:'create'%>
+<% if !@error.nil? then %>
+<%= @error %>
+ <%end%>
+<%= form_for :user,url: {:action=>'create'} do |f| %>
+	<%= f.label:name %>
+	<br/>
+	<%= f.text_field :name %>
+	<br/>
+	<%= f.label:password %>
+	<br/>
+	<%= f.password_field :password %>
+	<br/>
+	<%= f.label:Type %>
+	<br/>
+	<%= f.select :shop,['normal','shop'] %>
+	<br/>
+	<%= f.submit:'Sign up' %>
 <%end%>
-<%=link_to 'login',login_login_path%>
-<%=link_to 'home',welcome_home_path%>
+<%= link_to 'Login',login_login_path %>
+<%= link_to 'Home',welcome_home_path %>
