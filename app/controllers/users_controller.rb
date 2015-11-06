@@ -15,7 +15,12 @@ class UsersController < ApplicationController
          else
          end
        else
-         @error = 'Name is invalid'
+         @user.save
+         if @user.errors[:name] != []
+            @error = 'Name is invalid'
+         else
+           @error = 'Password is too short'
+         end
          render 'new'  
        end    
     else 
